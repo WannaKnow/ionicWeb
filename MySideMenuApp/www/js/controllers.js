@@ -52,16 +52,16 @@ $scope.positions = {};
   $scope.addPositions = function()
   {
 
-    var Positions=$resource('http://localhost/PizzaGuilia/web/app_dev.php/webService/positions');
+    var Positions=$resource('http://localhost/PizzaGuilia/web/app_dev.php/webService/livpos');
     var position={};
   
     console.log($scope.orderData.order);
     $scope.positions = [
-    { "point": '33.570376, -7.556546', "order": parseInt($scope.orderData.order) },
-    { "point": '33.569857, -7.556267', "order": parseInt($scope.orderData.order) },
-    { "point": '33.569232, -7.555752', "order": parseInt($scope.orderData.order) },
-    { "point": '33.568785, -7.555323', "order": parseInt($scope.orderData.order) },
-    { "point": '33.5676405,-7.5545935',"order": parseInt($scope.orderData.order) },
+    { "point": '33.570376, -7.556546', "deliverer": parseInt($scope.orderData.order) },
+    { "point": '33.569857, -7.556267', "deliverer": parseInt($scope.orderData.order) },
+    { "point": '33.569232, -7.555752', "deliverer": parseInt($scope.orderData.order) },
+    { "point": '33.568785, -7.555323', "deliverer": parseInt($scope.orderData.order) },
+    { "point": '33.5676405,-7.5545935',"deliverer": parseInt($scope.orderData.order) },
   ];
 /*
 for(var i in $scope.positions)
@@ -74,7 +74,7 @@ for(var i in $scope.positions)
       var promise=$interval(callAtTimeout=function ()
           { console.log($scope.indice);
               console.log($scope.positions[$scope.indice])
-              $scope.position={"yb_ecommercebundle_position":$scope.positions[$scope.indice]};
+              $scope.position={"yb_ecommercebundle_livpos":$scope.positions[$scope.indice]};
               Positions.save($scope.position);//binma
             $scope.indice++;
             if($scope.indice >= $scope.positions.length)
